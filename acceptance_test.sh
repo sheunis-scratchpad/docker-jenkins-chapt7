@@ -1,2 +1,2 @@
 #!/bin/bash
-test $(curl localhost:8765/sum?a=1\&b=2) -eq 3
+test $(curl 34.201.45.141:8080/sum?a=1\&b=2) -eq 3
