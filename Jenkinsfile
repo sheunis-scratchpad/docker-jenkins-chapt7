@@ -61,5 +61,18 @@ pipeline {
         sh "./acceptance_test.sh"
       }
     }
+    stage("Release") {
+      steps {
+        sh "ansible-playbook playbook.yml -i inventory/production --extra-vars \"ansible_sudo_pass=password\""
+      }
+    }
+    stage("Smoke test") {
+      steps {
+        sleep 15
+        sh "chmod +x smoke_test.sh"
+        sh "./smoke_test.sh"
+      }
+    }
+
   }
 }
