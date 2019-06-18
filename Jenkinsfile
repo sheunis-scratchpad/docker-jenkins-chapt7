@@ -51,7 +51,7 @@ pipeline {
     }
     stage("Deploy to staging") {
       steps {
-        sh "ansible-playbook playbook.yml -i inventory/staging"
+        sh "ansible-playbook playbook.yml -i inventory/staging --extra-vars \"ansible_sudo_pass=password\""
       }
     }
     stage("Acceptance test") {
